@@ -4,6 +4,8 @@ export default class HomePage extends HTMLElement {
   constructor() {
     super();
     this.root = this.attachShadow({ mode: "open" });
+    const styles = document.createElement("style");
+    this.root.appendChild(styles);
     const template = document.getElementById("home-page-template");
     const content = template.content.cloneNode(true);
     this.appendChild(content);
@@ -12,9 +14,6 @@ export default class HomePage extends HTMLElement {
   }
 
   connectedCallback() {
-    window.addEventListener("", () => {
-      this.render();
-    });
     this.render();
   }
 

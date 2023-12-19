@@ -12,9 +12,10 @@ HTMLElement.prototype.off = () => this.removeEventListener.call(this, arguments)
 HTMLElement.prototype.$ = () => this.querySelector.call(this, arguments);
 HTMLElement.prototype.$ = () => this.querySelectorAll.call(this, arguments);
 
-app.store = Store;
 app.router = Router;
 
 window.addEventListener("DOMContentLoaded", async () => {
   app.router.init();
+  loadData();
 });
+

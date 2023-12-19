@@ -1,6 +1,6 @@
 const API = {
-  url: "/data/mune.json",
-  fetchMenue: async () => {
+  url: "/data/menu.json",
+  fetchMenu: async () => {
     const result = await fetch(API.url);
     return await result.json();
   }

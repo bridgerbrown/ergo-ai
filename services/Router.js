@@ -32,12 +32,23 @@ const Router = {
         break;
     }
     if (pageElement) {
-      const cache = document.querySelector("main");
-      cache.children[0].remove();
-      cache.appendChild(pageElement);
-      window.scrollX = 0;
-      window.scrollY = 0;
+        let currentPage = document.querySelector("main").firstElementChild; 
+        if (currentPage) {
+            let fadeOut = currentPage.animate([
+                {opacity: 1}, {opacity: 0}
+            ],{ duration: 200});
+            fadeOut.addEventListener("finish", () => {
+                currentPage.remove();
+                document.querySelector("main").appendChild(pageElement);
+                let fadeIn = pageElement.animate([
+                    {opacity: 0}, {opacity: 1}
+                ],{ duration: 200});
+            });
+        } else {
+            document.querySelector("main").appendChild(pageElement);
+        }
     }
+    window.scrollX = 0;
   }
 }
 export default Router;
