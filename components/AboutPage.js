@@ -1,4 +1,4 @@
-import loadCSS from "../hooks/loadCSS";
+import loadCSS from "../hooks/loadCSS.js";
 
 export default class AboutPage extends HTMLElement {
   constructor() {
@@ -8,7 +8,7 @@ export default class AboutPage extends HTMLElement {
     const styles = document.createElement("style");
     this.root.appendChild(styles);
     const section = document.createElement("section");
-    this.appendChild(section);
+    this.root.appendChild(section);
 
     loadCSS("AboutPage");
   }

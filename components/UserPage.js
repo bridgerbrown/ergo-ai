@@ -1,4 +1,4 @@
-import loadCSS from "../hooks/loadCSS";
+import loadCSS from "../hooks/loadCSS.js";
 
 export default class UserPage extends HTMLElement {
   constructor() {

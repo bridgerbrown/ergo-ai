@@ -1,7 +1,9 @@
-import Router from "./services/Router";
-import HomePage from "./components/HomePage";
-import AboutPage from "./components/AboutPage";
-import UserPage from "./components/UserPage";
+import Router from "./services/Router.js";
+import Store from "./services/Store.js";
+import API from "./services/API.js";
+import HomePage from "./components/HomePage.js";
+import AboutPage from "./components/AboutPage.js";
+import UserPage from "./components/UserPage.js";
 
 window.app = {};
 

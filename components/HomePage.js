@@ -1,4 +1,5 @@
-import loadCSS from "../hooks/loadCSS";
+import API from '../services/API.js';
+import loadCSS from "../hooks/loadCSS.js";
 
 export default class HomePage extends HTMLElement {
   constructor() {
@@ -9,7 +10,7 @@ export default class HomePage extends HTMLElement {
     const template = document.getElementById("home-page-template");
     const content = template.content.cloneNode(true);
     const styles = document.createElement("style");
-    this.appendChild(content);
+    this.root.appendChild(content);
     this.root.appendChild(styles);
 
     loadCSS("HomePage");
