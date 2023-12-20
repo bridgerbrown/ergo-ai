@@ -3,31 +3,45 @@ import loadCSS from "../hooks/loadCSS";
 export default class HomePage extends HTMLElement {
   constructor() {
     super();
+
     this.root = this.attachShadow({ mode: "open" });
-    const styles = document.createElement("style");
-    this.root.appendChild(styles);
+
     const template = document.getElementById("home-page-template");
     const content = template.content.cloneNode(true);
+    const styles = document.createElement("style");
     this.appendChild(content);
+    this.root.appendChild(styles);
 
     loadCSS("HomePage");
   }
 
   connectedCallback() {
     this.render();
+    window.addEventListener("appmenuchange", () => {
+      this.render();
+    });
   }
 
   render() {
-    if (app.home.test) {
-      this.root.querySelector("#home").innerHTML = "";
-      const container = document.createElement("div");
-      container.innerHTML = `
-        <h2>Test</h2>
-      `;
-      this.root.querySelector("#home").appendChild(container);
-    } else {
-      this.root.querySelector("#home").innerHTML = `Loading...`;
-    }
+   if (app.store.menu) {
+          this.root.querySelector("#test").innerHTML = "";
+          for (let category of app.store.menu) {
+            const liCategory = document.createElement("li");
+            liCategory.innerHTML = `
+                  <h3>${category.name}</h3>
+                  <ul class='category'>
+                  </ul>`;
+            this.root.querySelector("#test").appendChild(liCategory);
+
+            category.products.map(product => {
+                const item = document.createElement("product-item");
+                item.dataset.product = JSON.stringify(product);
+                liCategory.querySelector("ul").appendChild(item);
+            });
+          }  
+        } else {
+          this.root.querySelector("#test").innerHTML = `Loading...`;
+        }
   }
 }
 customElements.define("home-page", HomePage);

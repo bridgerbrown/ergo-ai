@@ -5,17 +5,18 @@ export default class AboutPage extends HTMLElement {
     super();
 
     this.root = this.attachShadow({ mode: "open" });
-
-    const template = document.getElementById("about-page-template");
-    const content = template.content.cloneNode(true);
     const styles = document.createElement("style");
-    this.appendChild(content);
     this.root.appendChild(styles);
+    const section = document.createElement("section");
+    this.appendChild(section);
 
     loadCSS("AboutPage");
   }
 
   connectedCallback() {
+    window.addEventListener("appcartchange", () => {
+      this.render();
+    })
     this.render();
   }
   
@@ -24,11 +25,14 @@ export default class AboutPage extends HTMLElement {
     let html = `
       <h2>Hello</h2>
     `;
+    section.innerHTML = html;
+
     const template = document.getElementById("about-page-template");
     const content = template.content.cloneNode(true);
     section.appendChild(content);
-    section.innerHTML = html;
-    this.root.querySelector("#about").innerHTML = `Test...`;
+    this.root.querySelector("section").innerHTML += `
+      <h2>test about</h2>
+    `
   }
 }
 customElements.define("about-page", AboutPage);

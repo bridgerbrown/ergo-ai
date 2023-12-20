@@ -1,12 +1,12 @@
 const Router = {
   init: () => {
-    document.querySelectorAll("a.navlink").forEach((link) => {
-      link.addEventListener("click", event => {
+    document.querySelectorAll("a.navlink").forEach((a) => {
+      a.addEventListener("click", event => {
         event.preventDefault();
-        const url = link.href;
-        Router.go(url);
+        const href = event.target.getAttribute("href");
+        Router.go(href);
       });
-    })
+    });
     window.addEventListener("popstate", event => {
       Router.go(event.state.route, false);
     })
@@ -23,12 +23,6 @@ const Router = {
         break;
       case "/about":
         pageElement = document.createElement("about-page");
-        break;
-      default:
-        if (route.startsWith("/user/")) {
-          pageElement = document.createElement("user-page");
-          pageElement.dataset.id = route.substring(route.lastIndexOf("-") + 1);
-        }
         break;
     }
     if (pageElement) {

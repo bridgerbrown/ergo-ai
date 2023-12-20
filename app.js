@@ -13,9 +13,9 @@ HTMLElement.prototype.$ = () => this.querySelector.call(this, arguments);
 HTMLElement.prototype.$ = () => this.querySelectorAll.call(this, arguments);
 
 app.router = Router;
+app.store = Store;
 
 window.addEventListener("DOMContentLoaded", async () => {
   app.router.init();
-  loadData();
 });
 

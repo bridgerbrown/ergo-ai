@@ -1,0 +1,15 @@
+{
+    "name": "ErgoAI",
+    "short_name": "ErgoAI",
+    "theme_color": "#43281C",
+    "display": "standalone",
+    "background_color": "#EFEFEF",
+    "start_url": "/",
+    "scope": "/",
+    "description": "",
+    "icons": [
+    ],
+    "screenshots": [
+    ]
+}
+
