@@ -24,25 +24,7 @@ export default class HomePage extends HTMLElement {
   }
 
   render() {
-   if (app.store.menu) {
-          this.root.querySelector("#test").innerHTML = "";
-          for (let category of app.store.menu) {
-            const liCategory = document.createElement("li");
-            liCategory.innerHTML = `
-                  <h3>${category.name}</h3>
-                  <ul class='category'>
-                  </ul>`;
-            this.root.querySelector("#test").appendChild(liCategory);
-
-            category.products.map(product => {
-                const item = document.createElement("product-item");
-                item.dataset.product = JSON.stringify(product);
-                liCategory.querySelector("ul").appendChild(item);
-            });
-          }  
-        } else {
-          this.root.querySelector("#test").innerHTML = `Loading...`;
-        }
+    this.root.querySelector("#test").innerHTML = `Loading...`;
   }
 }
 customElements.define("home-page", HomePage);

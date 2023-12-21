@@ -1,0 +1,13 @@
+
+nav {
+  color: red;
+  background-color: black;
+  width: 500px;
+  height: 200px;
+}
+
+a.navlink {
+  color: red;
+  font-size: 36px;
+}
+
